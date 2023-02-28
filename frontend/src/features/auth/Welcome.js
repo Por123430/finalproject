@@ -7,7 +7,7 @@ const Welcome = () => {
     const content = (
         <section className="welcome">
             <p>{today}</p>
-            <p><Link to="/dash/notes">notes</Link></p>
+            {/* <p><Link to="/dash/notes">notes</Link></p> */}
             <p><Link to="/dash/users">users</Link></p>
         </section>
     )
