@@ -1,0 +1,16 @@
+.table-user,th,td{
+    border: solid 1px black;
+    width: 480px;
+}
+
+td {
+    margin: 0px;
+
+}
+tbody{
+    height: 20px;
+}
+.table-allcell{
+    padding: 0px;
+    margin: 0px;
+}

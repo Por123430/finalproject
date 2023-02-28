@@ -1,0 +1,16 @@
+.dash-nav{
+    content: left;
+    display: inline-block;
+    background-color: #F9E56D;
+    width: 20%;
+    font-size: 1.1em;
+}
+.dash-nav__container{
+    width: 13em;
+}
+.dash-nav__link{
+    margin: 20%;
+    display: flex;
+    color: darkblue;
+    text-decoration: none;
+}
