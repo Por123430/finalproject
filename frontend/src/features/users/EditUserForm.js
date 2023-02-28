@@ -91,9 +91,9 @@ const EditUserForm = ({ user }) => {
         <div className="form__Title-row">
           Edit User
           <div className="form__action-buttons">
-            <button className="icon-button" title="Save" onClick={onSaveUserClicked} disabled={!canSave}>
+            {/* <button className="icon-button" title="Save" onClick={onSaveUserClicked} disabled={!canSave}>
               <FontAwesomeIcon icon={faSave} />
-            </button>
+            </button> */}
           </div>
         </div>
         <label className="form__label" htmlFor="username">
@@ -133,7 +133,7 @@ const EditUserForm = ({ user }) => {
           size="3"
           onChange={onRolesChanged}
         >
-          {options}
+          {/* {options} */}
         </select>
       </form>
     </>

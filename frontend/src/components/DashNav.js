@@ -6,13 +6,16 @@ const DashNav = () => {
   const content = (
     <nav className="dash-nav" >
       <div className="dash-nav__container" >
-        <Link to="/dash/Monitor" className="dash-nav__link">
-          Monitor
+        <Link to="/dash/LogMonitor" className="dash-nav__link">
+          Monitor 
+        </Link>
+        <Link to="/dash/users" className="dash-nav__link">
+          Users
         </Link>
         <Link to="/dash/LogUser" className="dash-nav__link">
           Log User
         </Link>
-        <Link to="/dash/LogMonitor" className="dash-nav__link">
+        <Link to="/dash/monitors" className="dash-nav__link">
           Log Monitor
         </Link>
         <Link to="/dash/Notification" className="dash-nav__link">

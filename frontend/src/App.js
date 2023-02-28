@@ -10,6 +10,8 @@ import Notification from './features/auth/Notification';
 import LogMonitor from './features/auth/LogMonitor';
 import EditUser from './features/users/EditUser';
 import NewUserForm from './features/users/NewUserForm';
+import MonitorList from './features/monitors/MonitorList';
+
 
 function App() {
   return (
@@ -20,6 +22,10 @@ function App() {
 
         <Route path="dash" element={<DashLayout />}>
             
+            <Route  path="monitors">
+              <Route index element={<MonitorList />} />
+            </Route>
+
             <Route path="notification" element={<Notification />}/>
             <Route path="logmonitor" element={<LogMonitor />}/>
             <Route index element={<Welcome />}/>
