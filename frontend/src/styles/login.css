@@ -1,0 +1,32 @@
+.public{
+    width: 24%;
+    background-color: antiquewhite;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+header{
+    text-align: center;
+}
+.form{
+    margin: 15px 20%;
+}
+.login-input{
+    padding: 20px auto;
+    margin: 0px auto;
+    
+}
+label{
+    display: block;
+}
+.form__input{
+    display: block;
+    width: 96%;
+}
+.submit_section{
+    margin: auto;
+}
+.form__submit-button{
+    width: 100%;
+    opacity: 0.65;
+    margin: auto;
+}
