@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, useLocation } from 'react-router-dom'
 import "../styles/DashFooter.css"
+import useAuth from '../hooks/useAuth'
 const DashFooter = () => {
+
+    const { username, status, roles } = useAuth()
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -24,10 +27,10 @@ const DashFooter = () => {
     }
 
     const content = (
-        <footer className="dash-footer">
+        <footer className="dash-footer" style={{color: "#c2c2c5"}}>
             {goHomeButton}
-            <p> User:</p>
-            <p> Status:</p>
+            <p> User: {username}</p>
+            <p> Status: {roles}</p>
         </footer>
     )
   return content

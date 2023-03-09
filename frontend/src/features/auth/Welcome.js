@@ -9,6 +9,7 @@ const Welcome = () => {
             <p>{today}</p>
             <p><Link to="/dash/notes">notes</Link></p>
             <p><Link to="/dash/users">users</Link></p>
+            
         </section>
     )
   return content

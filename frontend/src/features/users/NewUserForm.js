@@ -16,6 +16,10 @@ const NewUserForm = () => {
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
+  const [firstname, setFirstname] = useState("");
+  const [validFirstname, setValidFirstname] = useState(false);
+  const [lastname, setLastname] = useState("");
+  const [validLastname, setValidLastname] = useState(false);
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
   const [roles, setRoles] = useState("");
@@ -23,7 +27,12 @@ const NewUserForm = () => {
   useEffect(() => {
     setValidUsername(USER_REGEX.test(username));
   }, [username]);
-
+  useEffect(() => {
+    setValidFirstname(USER_REGEX.test(firstname));
+  }, [firstname]);
+  useEffect(() => {
+    setValidLastname(USER_REGEX.test(lastname));
+  }, [lastname]);
   useEffect(() => {
     setValidPassword(PWD_REGEX.test(password));
   }, [password]);
@@ -32,12 +41,16 @@ const NewUserForm = () => {
     if (isSuccess) {
       setUsername("");
       setPassword("");
+      setFirstname("");
+      setLastname("");
       setRoles([]);
       navigate("/dash/users");
     }
   }, [isSuccess, navigate]);
 
   const onUsernameChanged = (e) => setUsername(e.target.value);
+  const onFirstnameChanged = (e) => setFirstname(e.target.value);
+  const onLastnameChanged = (e) => setLastname(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
 
   const onRolesChanged = (e) => {
@@ -49,12 +62,18 @@ const NewUserForm = () => {
   };
 
   const canSave =
-    [roles.length, validUsername, validPassword].every(Boolean) && !isLoading;
+    [
+      roles.length,
+      validUsername,
+      validFirstname,
+      validLastname,
+      validPassword,
+    ].every(Boolean) && !isLoading;
 
   const onSaveUserClicked = async (e) => {
     e.preventDefault();
     if (canSave) {
-      await addNewUser({ username, password, roles });
+      await addNewUser({ username, firstname, lastname, password, roles });
     }
   };
 
@@ -69,6 +88,8 @@ const NewUserForm = () => {
 
   const errClass = isError ? "errmsg" : "offscreen";
   const validUserClass = !validUsername ? "form__input--incomplete" : "";
+  const validFirstClass = !validFirstname ? "form__input--incomplete" : "";
+  const validLastClass = !validLastname ? "form__input--incomplete" : "";
   const validPwdclass = !validPassword ? "form__input--incomplete" : "";
   const validRolesClass = !Boolean(roles.length)
     ? "form__input--incomplete"
@@ -81,11 +102,6 @@ const NewUserForm = () => {
       <form className="form" onSubmit={onSaveUserClicked}>
         <div className="form__Title-row">
           New User
-          <div className="form__action-buttons">
-            <button className="icon-button" title="Save" disabled={!canSave}>
-              <FontAwesomeIcon icon={faSave} />
-            </button>
-          </div>
         </div>
         <label className="form__label" htmlFor="username">
           Username: <span className="nowrap">[3-20 letters]</span>
@@ -100,8 +116,33 @@ const NewUserForm = () => {
           onChange={onUsernameChanged}
         />
 
+        <label className="form__label" htmlFor="firstname">
+          Firstname: <span className="nowrap"></span>
+        </label>
+        <input
+          className={`form__input ${validFirstClass}`}
+          id="firstname"
+          name="firstname"
+          type="text"
+          autoComplete="off"
+          value={firstname}
+          onChange={onFirstnameChanged}
+        />
+        <label className="form__label" htmlFor="lastname">
+          Lastname: <span className="nowrap"></span>
+        </label>
+        <input
+          className={`form__input ${validLastClass}`}
+          id="lastname"
+          name="lastname"
+          type="text"
+          autoComplete="off"
+          value={lastname}
+          onChange={onLastnameChanged}
+        />
+
         <label className="form__label" htmlFor="password">
-          Username: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+          Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
         </label>
         <input
           className={`form__input ${validPwdclass}`}
@@ -119,17 +160,21 @@ const NewUserForm = () => {
           className={`form__select ${validRolesClass}`}
           id="roles"
           name="roles"
-          multiple={true}
           value={roles}
-          size="3"
+          size="2"
           onChange={onRolesChanged}
         >
           {options}
         </select>
+        <div className="form__action-buttons">
+            <button className="icon-button" title="Save" disabled={!canSave}>
+              Add NewUser
+            </button>
+          </div>
       </form>
     </>
-  )
-  return content
+  );
+  return content;
 };
 
 export default NewUserForm;

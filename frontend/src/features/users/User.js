@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { selectUserById } from "./userApiSlice";
@@ -20,8 +20,11 @@ const User = ({ userId }) => {
     const cellStatus = user.active ? '' : 'table__cell--inactive'
 
     return (
+      
       <tr className="table-allcell">
         <td className={`table-cell ${cellStatus}`}>{user.username}</td>
+        <td className={`table-cell ${cellStatus}`}>{user.firstname}</td>
+        <td className={`table-cell ${cellStatus}`}>{user.lastname}</td>
         <td className={`table-cell ${cellStatus}`}>{userRolesString}</td>
         <td className={`table-cell ${cellStatus}`}>
           <button className="icon-button table__button" onClick={handleEdit}>

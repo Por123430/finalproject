@@ -2,6 +2,7 @@ import React from 'react'
 import { useGetUsersQuery } from './userApiSlice'
 import User from './User'
 import "../../styles/Table.css"
+// import { Link } from 'react-router-dom'
 const UserList = () => {
 
   const {
@@ -10,8 +11,11 @@ const UserList = () => {
     isSuccess,
     isError,
     error
-  } = useGetUsersQuery()
-
+  } = useGetUsersQuery('usersList',{
+    pollingInterval: 60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true
+  })
   let content
 
   if (isLoading) content = <p>Loading...</p>
@@ -32,6 +36,8 @@ const UserList = () => {
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__thuser__username">Username</th>
+            <th scope="col" className="table__thuser__username">Firstname</th>
+            <th scope="col" className="table__thuser__roles">Lastname</th>
             <th scope="col" className="table__thuser__roles">Roles</th>
             <th scope="col" className="table__thuser__edit">Edit</th>
           </tr>
@@ -40,6 +46,7 @@ const UserList = () => {
           {tableContent}
         </tbody>
       </table>
+      
     )
   }
   return content

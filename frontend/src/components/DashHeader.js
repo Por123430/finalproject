@@ -57,10 +57,13 @@ const DashHeader = () => {
           <img src={Logo} alt="Logo"></img>
         </nav>
         
-        <Link to="/dash/notes" className="dash-header__title" >
+        {/* <Link to="/dash/notes" className="dash-header__title" >
           DataCenter
-        </Link>
-        {logoutButton}
+        </Link> */}
+        <div className="dash-header_logout-button">
+          {logoutButton}
+        </div>
+        
       </div>
     </header>
   );

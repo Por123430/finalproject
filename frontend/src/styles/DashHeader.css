@@ -1,5 +1,5 @@
 .dash-header{
-    background-color: #F9D703;
+    background-color: #2D2F36;
     text-align: right;
     font-size: 1.6em;
     padding: 12px 0px;
@@ -23,4 +23,9 @@
     float: right;
     font-size: 2rem;
     text-decoration: none;
+}
+
+.dash-header_logout-button{
+    margin: auto 50%;
+    padding: 0px 0px 0px 500px;
 }
